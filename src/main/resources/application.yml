@@ -1,0 +1,61 @@
+app:
+  version: 0.0.0
+
+# config context path to "/" by setting an empty string
+server:
+  #contextPath:
+  servlet:
+    context-path: /api/v1
+  port: 8080
+
+# JACKSON
+spring:
+  servlet:
+    multipart:
+      max-file-size: -1
+      max-request-size: -1
+  profiles:
+    active:
+      - default
+  main:
+    allow-circular-references: true
+  jackson:
+    serialization:
+      indent-output: true
+  devtools:
+    add-properties: true
+  datasource:
+    url: jdbc:pgsql://localhost:5432/sam_db
+    username: admin
+    password: admin
+    driver-class-name: org.postgresql.Driver
+
+    hikari:
+      max-lifetime: 30000 #milisegundos (1000=1segundo) 60000=1 minute wait time
+
+  jpa:
+    hibernate:
+      #proc.param_null_passing: true
+      #dialect: org.hibernate.dialect.SQLServer2012Dialect
+      ddl-auto: update
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        #las 2 lineas de arriba sirven para que JPA reconozca los nombres de las tablas en NombreTabla, tal y como esta en la BD
+    database-platform: org.hibernate.dialect.SQLServer2012Dialect
+    show-sql: false
+    database: postgresql
+    open-in-view: true
+
+  mvc:
+    throw-exception-if-no-handler-found: true
+
+  web:
+    resources:
+      add-mappings: false
+
+logging:
+  level:
+    org:
+      springframework:
+      security: DEBUG
