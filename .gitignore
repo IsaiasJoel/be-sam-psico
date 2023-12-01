@@ -34,3 +34,15 @@ build/
 .vscode/
 bin/src/test/java/org/nicmaish/besampsico/BeSamPsicoApplicationTests.class
 bin/src/main/resources/application.properties
+.mvn/wrapper/maven-wrapper.jar
+.mvn/wrapper/maven-wrapper.properties
+bin/.mvn/wrapper/maven-wrapper.jar
+bin/.mvn/wrapper/maven-wrapper.properties
+bin/mvnw
+bin/mvnw.cmd
+bin/pom.xml
+bin/src/main/java/org/nicmaish/besampsico/BeSamPsicoApplication.class
+mvnw
+mvnw.cmd
+bin/.mvn/wrapper/maven-wrapper.jar
+bin/.mvn/wrapper/maven-wrapper.jar
