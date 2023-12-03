@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/v1/login")
+@RequestMapping("/login")
 public class LoginRestController {
 
     @Autowired
@@ -33,7 +33,7 @@ public class LoginRestController {
     @Autowired
     private JwtUserDetailsService userDetailsService;
 
-    @PostMapping("/iniciar-sesion")
+    @PostMapping("/")
     public ResponseEntity<JwtResponse> login(@RequestBody JwtRequest req) throws Exception{
         authenticate(req.getUsername(), req.getPassword());
 

@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface IVoluntarioRepo extends JpaRepository<Voluntario, Integer>{
 
-	@Query("FROM Voluntario")
+	@Query("FROM Voluntario where correo=:correo")
 	Voluntario findByCorreo(String correo);
 }

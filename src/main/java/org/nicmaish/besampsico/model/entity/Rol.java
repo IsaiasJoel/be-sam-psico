@@ -21,6 +21,6 @@ public class Rol {
 	@Column(name = "id")
 	private Integer id;
 
-	@Column(name = "id")
+	@Column(name = "nombre")
 	private String nombre;
 }

@@ -25,9 +25,9 @@ spring:
   devtools:
     add-properties: true
   datasource:
-    url: jdbc:pgsql://localhost:5432/sam_db
-    username: admin
-    password: admin
+    url: jdbc:postgresql://nicmaish.postgres.database.azure.com:5432/sam_db
+    username: LUIS
+    password: NicMaish2023
     driver-class-name: org.postgresql.Driver
 
     hikari:
@@ -35,16 +35,20 @@ spring:
 
   jpa:
     hibernate:
-      #proc.param_null_passing: true
-      #dialect: org.hibernate.dialect.SQLServer2012Dialect
       ddl-auto: update
       naming:
         implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
         #las 2 lineas de arriba sirven para que JPA reconozca los nombres de las tablas en NombreTabla, tal y como esta en la BD
-    database-platform: org.hibernate.dialect.SQLServer2012Dialect
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
     show-sql: false
     database: postgresql
+
     open-in-view: true
 
   mvc:
@@ -54,8 +58,5 @@ spring:
     resources:
       add-mappings: false
 
-logging:
-  level:
-    org:
-      springframework:
-      security: DEBUG
+jwt:
+  secret: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAIv53PWio9eG/AzyxQBOyijbfTJ7HXiBGfJwmYxeCisGVNwqbo5uf/EWt1TvSiPKgsTiFVv1HDqMoOeOsFNGhZcCAwEAAQ==
