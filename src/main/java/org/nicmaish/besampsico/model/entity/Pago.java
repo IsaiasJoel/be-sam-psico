@@ -7,6 +7,6 @@ import jakarta.persistence.*;
 public class Pago {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "pag_id")
     private Integer id;
 }

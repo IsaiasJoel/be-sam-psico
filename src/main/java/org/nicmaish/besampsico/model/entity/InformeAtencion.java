@@ -7,6 +7,6 @@ import jakarta.persistence.*;
 public class InformeAtencion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "infa_id")
     private Integer id;
 }

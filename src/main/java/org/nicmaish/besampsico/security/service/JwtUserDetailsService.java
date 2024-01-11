@@ -1,9 +1,11 @@
 package org.nicmaish.besampsico.security.service;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
-import org.nicmaish.besampsico.model.entity.Voluntario;
-import org.nicmaish.besampsico.service.interfaces.IVoluntarioService;
+import org.nicmaish.besampsico.model.entity.Usuario;
+import org.nicmaish.besampsico.repo.IUsuarioRepo;
+import org.nicmaish.besampsico.service.interfaces.IUsuarioService;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,21 +20,21 @@ import java.util.List;
 @RequiredArgsConstructor
 public class JwtUserDetailsService implements UserDetailsService {
 
-    private final IVoluntarioService service;
+    private final IUsuarioRepo repo;
 
+    @Transactional
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        //se puso null provisionalmente hasta encontrar la forma de cómo pasar los parámetros "responsable" e "ip"
-        Voluntario voluntario = service.buscarPorCorreo(username);
+        Usuario usuario = repo.findByCorreo(username);
 
-        if (voluntario == null) {
+        if (usuario == null) {
             throw new UsernameNotFoundException("usuario no encontrado");
         }
 
         List<GrantedAuthority> roles = new ArrayList<>();
-        voluntario.getRoles().forEach(rol -> {
+        usuario.getRoles().forEach(rol -> {
             roles.add(new SimpleGrantedAuthority(rol.getNombre()));
         });
-        return new org.springframework.security.core.userdetails.User(voluntario.getCorreo(), voluntario.getContrasenia(), roles);
+        return new org.springframework.security.core.userdetails.User(usuario.getCorreo(), usuario.getContrasenia(), roles);
     }
 }

@@ -6,7 +6,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-import org.nicmaish.besampsico.config.ApiResponse;
+import org.nicmaish.besampsico.config.apiresponse.ApiResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.AuthenticationException;
@@ -18,6 +18,8 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
+
+import static org.nicmaish.besampsico.utils.Constantes.ERROR;
 
 //Clase S6
 @Component
@@ -32,15 +34,14 @@ public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
         }
 
         Map<String,String> mensajes = new HashMap<>();
-        mensajes.put("001",exceptionMsg);
+        mensajes.put(ERROR,exceptionMsg);
 
         ApiResponse<?> errorResponse = ApiResponse.builder()
                 .datetime(LocalDateTime.now())
-                .status(HttpStatus.NOT_FOUND.value())
-                .successful(true)
+                .status(HttpStatus.UNAUTHORIZED.value())
+                .successful(false)
                 .message(mensajes)
                 .data(null)
-                .details(request.getRequestURI())
                 .build();
 
         response.setStatus(HttpStatus.UNAUTHORIZED.value());

@@ -7,6 +7,6 @@ import jakarta.persistence.*;
 public class Recurso {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "rec_id")
     private Integer id;
 }

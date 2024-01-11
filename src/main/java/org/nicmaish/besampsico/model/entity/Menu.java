@@ -11,7 +11,7 @@ import lombok.Setter;
 public class Menu {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "men_id")
     private Integer id;
 
     @Column(name = "numeroOrden")

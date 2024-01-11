@@ -57,9 +57,6 @@ public class WebSecurityConfig{
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(req -> req
                 		.requestMatchers(new AntPathRequestMatcher("/login/**")).permitAll()
-//                      .requestMatchers("/v1/login/**").permitAll()
-//                        .requestMatchers("/rest/**").permitAll()
-//                        .requestMatchers("/categories/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .httpBasic(Customizer.withDefaults())

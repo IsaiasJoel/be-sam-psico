@@ -1,11 +1,10 @@
-package org.nicmaish.besampsico.config;
+package org.nicmaish.besampsico.config.apiresponse;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.Map;
-
 
 @Builder
 @ToString
@@ -19,5 +18,4 @@ public class ApiResponse<T> {
     private boolean successful;
     private Map message;
     private T data;
-    private String details;
 }

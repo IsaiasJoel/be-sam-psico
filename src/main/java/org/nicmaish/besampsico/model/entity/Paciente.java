@@ -8,6 +8,6 @@ import jakarta.persistence.*;
 public class Paciente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "pac_id")
     private Integer id;
 }

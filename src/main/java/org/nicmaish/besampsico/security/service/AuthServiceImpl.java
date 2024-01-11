@@ -15,7 +15,7 @@ public class AuthServiceImpl {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String username = auth.getName();
 
-        log.info(username);
+        //TODO: no está implementado
 
         auth.getAuthorities().forEach(e -> log.info(e.getAuthority()));
 

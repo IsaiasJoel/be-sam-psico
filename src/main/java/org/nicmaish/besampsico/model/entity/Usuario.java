@@ -11,17 +11,23 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "voluntario")
+@Table(name = "usuario")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Voluntario {
+public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
+	@Column(name = "usu_id")
 	private Integer id;
+
+	@Column(name = "correo")
+	private String correo;
+
+	@Column(name = "contrasenia")
+	private String contrasenia;
 
 	@Column(name = "apPaterno")
 	private String apPaterno;
@@ -59,8 +65,8 @@ public class Voluntario {
 	@Column(name = "anioEgreso")
 	private String anioEgreso;
 
-	@Column(name = "esColegiado")
-	private boolean esColegiado;
+	@Column(name = "colegiado")
+	private boolean colegiado;
 
 	@Column(name = "numeroColegiatura")
 	private String numeroColegiatura;
@@ -68,12 +74,9 @@ public class Voluntario {
 	@Column(name = "resumenProfesional")
 	private String resumenProfesional;
 
-	@Column(name = "correo")
-	private String correo;
+	@Column(name = "habilitado")
+	private boolean habilitado;
 
-	@Column(name = "contrasenia")
-	private String contrasenia;
-
-	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, orphanRemoval = true)
+	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
 	private List<Rol> roles;
 }

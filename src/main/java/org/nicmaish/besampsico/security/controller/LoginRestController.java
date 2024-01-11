@@ -7,7 +7,6 @@ import org.nicmaish.besampsico.security.JwtTokenUtil;
 import org.nicmaish.besampsico.security.model.JwtRequest;
 import org.nicmaish.besampsico.security.model.JwtResponse;
 import org.nicmaish.besampsico.security.service.JwtUserDetailsService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -19,19 +18,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
 @RestController
 @RequestMapping("/login")
+@RequiredArgsConstructor
 public class LoginRestController {
-
-    @Autowired
-    private AuthenticationManager authenticationManager;
-
-    @Autowired
-    private JwtTokenUtil jwtTokenUtil;
-
-    @Autowired
-    private JwtUserDetailsService userDetailsService;
+    private final AuthenticationManager authenticationManager;
+    private final JwtTokenUtil jwtTokenUtil;
+    private final JwtUserDetailsService userDetailsService;
 
     @PostMapping("/")
     public ResponseEntity<JwtResponse> login(@RequestBody JwtRequest req) throws Exception{
@@ -52,5 +45,4 @@ public class LoginRestController {
             throw new Exception("INVALID_CREDENTIALS", e);
         }
     }
-
 }

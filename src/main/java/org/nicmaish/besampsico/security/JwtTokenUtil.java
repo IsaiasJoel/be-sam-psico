@@ -98,16 +98,4 @@ public class JwtTokenUtil implements Serializable {
         }
         return token;
     }
-
-    public String obtenerIpDesdeCabeceraHttp(HttpServletRequest request) {
-        String ip = "";
-
-        if (request == null) {
-            throw new NullPointerException("Los datos enviados no son correctos.");
-        }
-
-        ip = request.getRemoteAddr(); //getLocalAddr
-
-        return ip;
-    }
 }

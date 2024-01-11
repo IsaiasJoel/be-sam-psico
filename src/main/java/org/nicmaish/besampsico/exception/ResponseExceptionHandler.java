@@ -1,6 +1,6 @@
 package org.nicmaish.besampsico.exception;
 
-import org.nicmaish.besampsico.config.ApiResponse;
+import org.nicmaish.besampsico.config.apiresponse.ApiResponse;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -35,7 +35,6 @@ public class ResponseExceptionHandler extends ResponseEntityExceptionHandler {
                 .successful(false)
                 .message(errors)
                 .data(null)
-                .details(request.getDescription(false))
                 .build();
 
         return new ResponseEntity<>(apiResponse, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -55,7 +54,6 @@ public class ResponseExceptionHandler extends ResponseEntityExceptionHandler {
                 .successful(false)
                 .message(errors)
                 .data(null)
-                .details(request.getDescription(false))
                 .build();
 
         return new ResponseEntity<>(apiResponse, HttpStatus.NOT_FOUND);
@@ -74,7 +72,6 @@ public class ResponseExceptionHandler extends ResponseEntityExceptionHandler {
                 .successful(false)
                 .message(errors)
                 .data(null)
-                .details(request.getDescription(false))
                 .build();
 
         return new ResponseEntity<>(apiResponse, HttpStatus.NOT_FOUND);
@@ -97,7 +94,6 @@ public class ResponseExceptionHandler extends ResponseEntityExceptionHandler {
                 .successful(false)
                 .message(errors)
                 .data(null)
-                .details(request.getDescription(false))
                 .build();
 
         return new ResponseEntity<>(apiResponse, HttpStatus.BAD_REQUEST);
@@ -116,7 +112,6 @@ public class ResponseExceptionHandler extends ResponseEntityExceptionHandler {
                 .successful(false)
                 .message(errors)
                 .data(null)
-                .details(request.getDescription(false))
                 .build();
 
         return new ResponseEntity<>(apiResponse, HttpStatus.BAD_REQUEST);
