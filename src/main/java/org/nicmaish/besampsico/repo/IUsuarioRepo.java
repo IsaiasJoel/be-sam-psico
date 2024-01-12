@@ -8,4 +8,6 @@ public interface IUsuarioRepo extends JpaRepository<Usuario, Integer>{
 
 	@Query("FROM Usuario where correo=:correo")
     Usuario findByCorreo(String correo);
+    @Query("FROM Usuario where dni=:dni")
+    Usuario findByDni(String dni);
 }

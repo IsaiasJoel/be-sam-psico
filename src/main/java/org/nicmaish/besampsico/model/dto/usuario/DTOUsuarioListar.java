@@ -23,4 +23,5 @@ public class DTOUsuarioListar {
     private String especialidad;
     private Boolean habilitado;
     private Integer casosAsignados;
+    private String dni;
 }

@@ -11,8 +11,9 @@ import java.time.LocalDate;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class DTOUsuarioCrearEditarRequest {
+public class DTOUsuarioEncontrado {
     private Integer id;
     private String apPaterno;
     private String apMaterno;
@@ -32,7 +33,4 @@ public class DTOUsuarioCrearEditarRequest {
     private String resumenProfesional;
     private boolean habilitado;
     private String correo;
-
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private String contrasenia;
 }
