@@ -1,28 +1,24 @@
-package org.nicmaish.besampsico.model.entity;
+package org.nicmaish.besampsico.model.dto.paciente;
 
-
-import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 
 import java.time.LocalDate;
 
-@Entity
-@Table(name = "paciente")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Paciente {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "pac_id")
+public class DTOPacienteEncontrado {
     private Integer id;
 
     //Datos personales
     private String apPaterno;
     private String apMaterno;
     private String nombres;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate fechaNacimiento;
     private String dni;
     private String lugarNacimiento;
@@ -40,7 +36,7 @@ public class Paciente {
     //Nivel socioeconómico
     private String tipoVivienda;
     private String habitacionesOcamas;
-    private String serviciosBasicos;
+    private String serviciosBásicos;
     private String gastosMensuales;
     private String informacionGastoFamiliar;
     private String tipoDeSeguro;

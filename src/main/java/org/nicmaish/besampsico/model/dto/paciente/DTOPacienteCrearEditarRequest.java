@@ -1,22 +1,15 @@
-package org.nicmaish.besampsico.model.entity;
+package org.nicmaish.besampsico.model.dto.paciente;
 
-
-import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
 
-@Entity
-@Table(name = "paciente")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Paciente {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "pac_id")
+public class DTOPacienteCrearEditarRequest {
     private Integer id;
 
     //Datos personales
