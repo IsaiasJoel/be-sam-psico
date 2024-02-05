@@ -3,12 +3,7 @@ package org.nicmaish.besampsico.model.mapper;
 import org.modelmapper.ModelMapper;
 import org.nicmaish.besampsico.model.dto.servicio.DTOServicioCrearEditarRequest;
 import org.nicmaish.besampsico.model.dto.servicio.DTOServicioListar;
-import org.nicmaish.besampsico.model.dto.usuario.DTOUsuarioCrearEditarRequest;
-import org.nicmaish.besampsico.model.dto.usuario.DTOUsuarioEncontrado;
-import org.nicmaish.besampsico.model.dto.usuario.DTOUsuarioListar;
-import org.nicmaish.besampsico.model.dto.usuario.DTOUsuarioSesion;
 import org.nicmaish.besampsico.model.entity.Servicio;
-import org.nicmaish.besampsico.model.entity.Usuario;
 
 import java.util.List;
 

@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import org.nicmaish.besampsico.model.dto.servicio.DTOServicioCrearEditarRequest;
 import org.nicmaish.besampsico.model.dto.servicio.DTOServicioListar;
 import org.nicmaish.besampsico.model.entity.Servicio;
-import org.nicmaish.besampsico.model.enums.OPCION_ELIMINAR;
 import org.nicmaish.besampsico.model.mapper.ServicioMapper;
 import org.nicmaish.besampsico.repo.IServicioRepo;
 import org.nicmaish.besampsico.service.interfaces.IServicioService;
@@ -17,6 +16,12 @@ import java.util.List;
 public class ServicioServiceImpl implements IServicioService {
 
     private final IServicioRepo repo;
+
+    @Override
+    public DTOServicioListar buscarPorId(Integer id) {
+        Servicio entity = repo.findById(id).orElseThrow();
+        return ServicioMapper.convertirEntityADtoUsuarioListar(entity);
+    }
 
     @Override
     public List<DTOServicioListar> listarTodos() {
@@ -41,9 +46,9 @@ public class ServicioServiceImpl implements IServicioService {
     }
 
     @Override
-    public void habilitar(Integer id, OPCION_ELIMINAR tipo) {
+    public void habilitar(Integer id, String tipo) {
         Servicio entity = repo.findById(id).orElseThrow();
-        final boolean activar = tipo.equals(OPCION_ELIMINAR.HABILITAR); //habilitar | deshabilitar
+        final boolean activar = tipo.equals("habilitar"); //habilitar | deshabilitar
         entity.setHabilitado(activar);
         repo.save(entity);
     }

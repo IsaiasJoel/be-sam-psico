@@ -1,9 +1,9 @@
 package org.nicmaish.besampsico.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.nicmaish.besampsico.model.dto.servicio.DTOServicioCrearEditarRequest;
-import org.nicmaish.besampsico.model.dto.servicio.DTOServicioListar;
-import org.nicmaish.besampsico.service.interfaces.IServicioService;
+import org.nicmaish.besampsico.model.dto.ambiente.DTOAmbienteCrearEditarRequest;
+import org.nicmaish.besampsico.model.dto.ambiente.DTOAmbienteListar;
+import org.nicmaish.besampsico.service.interfaces.IAmbienteService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,24 +12,25 @@ import java.util.List;
 import java.util.Map;
 
 import static org.nicmaish.besampsico.config.apiresponse.ApiResponseConfig.generarRespuesta;
-import static org.nicmaish.besampsico.utils.Constantes.*;
+import static org.nicmaish.besampsico.utils.Constantes.MENSAJE_CONSULTA_EXITOSA;
+import static org.nicmaish.besampsico.utils.Constantes.SISTEMA;
 import static org.springframework.http.HttpStatus.OK;
 
 @RestController
-@RequestMapping("/servicios")
+@RequestMapping("/ambientes")
 @RequiredArgsConstructor
-public class ServicioRestController {
+public class AmbienteRestController {
     //==================================================================
     // Dependencias
     //==================================================================
-    private final IServicioService service;
+    private final IAmbienteService service;
 
     //==================================================================
     // GET
     //==================================================================
     @GetMapping("/")
     public ResponseEntity<?> listarTodos() {
-        List<DTOServicioListar> lista = service.listarTodos();
+        List<DTOAmbienteListar> lista = service.listarTodos();
 
         Map<String, String> message = new HashMap<>();
         message.put(SISTEMA, MENSAJE_CONSULTA_EXITOSA);
@@ -40,7 +41,7 @@ public class ServicioRestController {
     public ResponseEntity<?> buscarPorId(
             @PathVariable Integer id
     ) {
-        DTOServicioListar objeto = service.buscarPorId(id);
+        DTOAmbienteListar objeto = service.buscarPorId(id);
 
         Map<String, String> message = new HashMap<>();
         message.put(SISTEMA, MENSAJE_CONSULTA_EXITOSA);
@@ -52,7 +53,7 @@ public class ServicioRestController {
     //==================================================================
     @PostMapping("/")
     public ResponseEntity<Object> crear(
-            @RequestBody DTOServicioCrearEditarRequest dto
+            @RequestBody DTOAmbienteCrearEditarRequest dto
     ) {
         service.crear(dto);
         Map<String, String> message = new HashMap<>();
@@ -66,7 +67,7 @@ public class ServicioRestController {
     @PutMapping("/{id}")
     public ResponseEntity<Object> editar(
             @PathVariable Integer id,
-            @RequestBody DTOServicioCrearEditarRequest dto
+            @RequestBody DTOAmbienteCrearEditarRequest dto
     ) {
         service.editar(id, dto);
         Map<String, String> message = new HashMap<>();
